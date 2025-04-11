@@ -1,0 +1,361 @@
+.profile-container {
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 80px);
+}
+
+.profile-header {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+.profile-cover {
+    height: 200px;
+    background: linear-gradient(to right, #FF6B35, #ff8659);
+}
+
+.profile-info {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: -75px;
+    object-fit: cover;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.profile-text h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2B2D42;
+}
+
+.profile-text p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+#editProfileBtn {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+}
+
+.profile-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.profile-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.profile-section h2 {
+    font-size: 1.5rem;
+    color: #2B2D42;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item label {
+    display: block;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    color: #2B2D42;
+    font-size: 1.1rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: #2B2D42;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2B2D42;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #editProfileBtn {
+        position: static;
+        margin-top: 1rem;
+    }
+
+    .profile-avatar {
+        margin-top: -50px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.upload-photo-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-photo-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-photo-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+#profileAvatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.form-hint {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+#editWorkFields h3 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #333;
+}
+
+.view-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.view-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.view-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.view-name {
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.view-time {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.no-views {
+    color: #666;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+.profile-note {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 1rem;
+    font-size: 14px;
+    color: #666;
+    border-left: 3px solid #adb5bd;
+}
+
+.linkedin-link {
+    color: #0077b5; /* LinkedIn blue color */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.linkedin-link:hover {
+    color: #005582;
+    text-decoration: underline;
+}
+
+.linkedin-link::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230077b5"%3E%3Cpath d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/%3E%3C/svg%3E');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.private-info {
+    color: #888;
+    font-style: italic;
+    background-color: #f5f5f5;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.private-info i {
+    margin-right: 4px;
+}
+
+/* Add styling for viewing other users' profiles */
+.viewing-note {
+    background-color: #f8f9fa;
+    border-left: 4px solid #4a6fdc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.private-section {
+    position: relative;
+}
+
+.private-section::before {
+    content: "Some information is hidden for privacy";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 249, 250, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #666;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+/* Make user elements clickable in dashboard and network */
+.activity-item,
+.suggestion-item,
+.post-user-info,
+.post-avatar,
+.result-info,
+.result-avatar {
+    cursor: pointer;
+}
+
+.activity-item:hover,
+.suggestion-item:hover .suggestion-info,
+.post-user-info:hover,
+.result-info:hover {
+    color: var(--primary-color);
+}

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EduNet - Connect Students & Alumni</title>
+</head>
+<body>
+<style>
+    :root {
+        --primary-color: #0d6efd;
+        --primary-dark: #084298;
+        --secondary-color: #2c3e50;
+        --accent-color: #ff7c4c;
+        --gray-light: #6c757d;
+        --bg-light: #f9f9f9;
+        --bg-dark: #f4f6f9;
+        --border-radius: 12px;
+        --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* === NAVBAR STYLES === */
+/* === NAVBAR STYLES === */
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #FF6B35;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.nav-menu .btn {
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+/* Mobile Responsive Nav */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        margin-top: 10px;
+        background-color: #fff;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 0 20px;
+    }
+
+    .nav-menu.open {
+        max-height: 500px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu .btn {
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
+    }
+}
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: #fff;
+        color: var(--secondary-color);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    h1, h2, h3, h4 {
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    
+    .btn {
+        background-color: #FF6B35;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        border: none;
+        transition: background 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+    
+    .hero {
+        padding: 100px 0;
+        background: linear-gradient(to right, #f0f4ff, #ffffff);
+    }
+    
+    .hero h1 {
+        font-size: 46px;
+        color: var(--secondary-color);
+    }
+    
+    .hero p {
+        font-size: 18px;
+        color: var(--gray-light);
+        margin-top: 10px;
+        line-height: 1.7;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .col-md-6 {
+        flex: 1;
+        min-width: 300px;
+    }
+    
+    .image-content img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .section-title {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 60px;
+        font-weight: 700;
+        color: var(--secondary-color);
+    }
+    
+    .category-grid,
+    .featured-grid,
+    .testimonial-grid,
+    .institutions-grid {
+        display: grid;
+        gap: 30px;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    
+    .featured-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    
+    .institutions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .category-card,
+    .featured-card,
+    .testimonial-card,
+    .institution-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    
+    .category-card:hover,
+    .featured-card:hover,
+    .institution-card:hover {
+        transform: translateY(-6px);
+    }
+    
+    .category-image,
+    .featured-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+    
+    .category-content,
+    .featured-content {
+        padding: 20px;
+    }
+    
+    .testimonial-card {
+        padding: 30px;
+    }
+    
+    .testimonial-card p {
+        font-style: italic;
+        color: #444;
+        font-size: 16px;
+    }
+    
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+    
+    .institution-card {
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .institution-image {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+    
+    /* Footer */
+    .footer {
+        background: var(--bg-dark);
+        padding: 60px 0 30px;
+        margin-top: 80px;
+    }
+    
+    .footer-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    
+    .footer-links h4 {
+        margin-bottom: 20px;
+        color: var(--secondary-color);
+    }
+    
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer-links ul li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links ul a {
+        text-decoration: none;
+        color: var(--gray-light);
+        transition: color 0.3s ease;
+    }
+    
+    .footer-links ul a:hover {
+        color: var(--primary-color);
+    }
+    
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+        color: var(--gray-light);
+        font-size: 14px;
+    }
+    
+    /* Responsive for small devices */
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        .btn {
+            width: 100%;
+            margin: 5px 0;
+        }
+    
+        .footer-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>    
+<header class="header">
+    <div class="container nav-container">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff7c4c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span>EduNet</span>
+        </div>
+
+        <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+
+        <nav class="nav-menu">
+            <a href="/login" class="btn btn-secondary">Log In</a>
+            <a href="/signup" class="btn btn-primary">Sign Up</a>
+        </nav>
+    </div>
+</header>
+
+
+    <div>
+        <section class="hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Left Side - Text Content -->
+                    <div class="col-md-6 text-content">
+                        <h1>Bridge the Gap Between Students and Alumni </h1>
+                        <p>Connect with successful graduates and gain invaluable insights, and unlock opportunities. 
+                            Your next career breakthrough starts with a conversation.</p>
+                            <br>
+                        <a href="/signup" class="btn btn-primary btn-lg">Get Started</a>&nbsp;&nbsp;
+                        <a href="/login" class="btn btn-primary btn-lg">or Login</a>
+                    </div>
+                    <!-- Right Side - Image Content -->
+                    <div class="col-md-6 image-content">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600"
+                             alt="Students and alumni networking" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="categories">
+            <div class="container">
+                <h2 class="section-title">Explore Opportunities</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=500" alt="Networking" class="category-image">
+                        <div class="category-content">
+                            <h3>Networking Events</h3>
+                            <p>Connect with alumni in your industry</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500" alt="Mentorship" class="category-image">
+                        <div class="category-content">
+                            <h3>Mentorship Program</h3>
+                            <p>Learn from experienced professionals</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500" alt="Job Board" class="category-image">
+                        <div class="category-content">
+                            <h3>Communication</h3>
+                            <p>Chat and learn from experienced professionals</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500" alt="Resources" class="category-image">
+                        <div class="category-content">
+                            <h3>Sharing Experience</h3>
+                            <p>Share Your Expeience via e-mail or review section</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="featured">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <img src="https://ugcounselor-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/05/12124711/gurukul-kangri-vishwavidyalaya-Haridwar.jpg?auto=format&fit=crop&w=500" alt="Networking Event" class="featured-image">
+                        <div class="featured-content">
+                            <h3>Gurukul Kangri University</h3>
+                            <p>Our Alumni Network</p>
+                            <a href="/listings/search?College=Gurukul"><button class="btn btn-primary">Register</button></a>
+                        </div>
+                    </div>
+                    <div class="featured-card">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=500" alt="Tech Meetup" class="featured-image">
+                        <div class="featured-content">
+                            <h3>Tech Industry Meetup</h3>
+                            <p>Connect with alumni in tech</p>
+                            <button class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="featured-card">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500" alt="Career Workshop" class="featured-image">
+                        <div class="featured-content">
+                            <h3>Career Development Workshop</h3>
+                            <p>Enhance your professional skills</p>
+                            <button class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="institutions">
+            <div class="container">
+                <h2 class="section-title">Trusted by Leading Institutions</h2>
+                <div class="institutions-grid">
+                    <div class="institution-card">
+                        <a href="https://gkv.ac.in" target="_blank" rel="noopener noreferrer">
+                            <img src="https://img.collegepravesh.com/2016/11/GKV-Haridwar-Logo.jpg" alt="Gurukul Kangri University" class="institution-image">
+                            <h3>Gurukul Kangri University</h3>
+                            <p>Haridwar, Uttarakhand</p>
+                        </a>
+                    </div>
+                    <div class="institution-card">
+                        <a href="https://home.iitd.ac.in" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.freelogovectors.net/wp-content/uploads/2021/04/indian-institute-of-technology-delhi-logo-freelogovectors.net_.png" alt="IIT Delhi" class="institution-image">
+                            <h3>IIT Delhi</h3>
+                            <p>New Delhi, India</p>
+                        </a>
+                    </div>
+                    <div class="institution-card">
+                        <a href="https://www.iitb.ac.in" target="_blank" rel="noopener noreferrer">
+                            <img src="https://th.bing.com/th/id/OIP.XI-B80Z9xcnD2JGc3sXFIQHaHc?rs=1&pid=ImgDetMain" alt="IIT Bombay" class="institution-image">
+                            <h3>IIT Bombay</h3>
+                            <p>Mumbai, India</p>
+                        </a>
+                    </div>
+                    <div class="institution-card">
+                        <a href="https://www.iitm.ac.in" target="_blank" rel="noopener noreferrer">
+                            <img src="https://th.bing.com/th/id/OIP.syg3Bz4NIYcQNBQWZfUsVAAAAA?rs=1&pid=ImgDetMain" alt="IIT Madras" class="institution-image">
+                            <h3>IIT Madras</h3>
+                            <p>Chennai, India</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Owners Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>"AlumniNet helped me connect with mentors who guided my career transition into tech."</p>
+                        <div class="testimonial-author">
+                            <img src="https://img.collegepravesh.com/2016/11/GKV-Haridwar-Logo.jpg" alt="Chandrachur Singh" class="author-image">
+                            <div>
+                                <h4>Chandrachur Singh</h4>
+                                <p>Class of 2021 to 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The networking events led to amazing opportunities and meaningful connections."</p>
+                        <div class="testimonial-author">
+                            <img src="https://img.collegepravesh.com/2016/11/GKV-Haridwar-Logo.jpg" alt="David Kumar" class="author-image">
+                            <div>
+                                <h4>Sarthak Raj</h4>
+                                <p>Class of 2021 to 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-links">
+              <h4>About</h4>
+              <ul>
+                <li><a href="https://www.gkv.ac.in/about-us/">About Us</a></li>
+                <li><a href="https://www.gkv.ac.in/vision-and-mission/">Our Mission</a></li>
+                <li><a href="https://www.gkv.ac.in/contact-us/">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-links">
+              <h4>Resources</h4>
+              <ul>
+                <li><a href="https://www.gkv.ac.in/events/">Events</a></li>
+                <li><a href="#">Mentorship</a></li>
+                <li><a href="#">Job Board</a></li>
+              </ul>
+            </div>
+            <div class="footer-links">
+              <h4>Connect</h4>
+              <ul>
+                <li><a href="https://www.linkedin.com/school/gurukula-kangri-deemed-to-be-university/">LinkedIn</a></li>
+                <li><a href="https://x.com/GkvSocial?t=hn-LrFQ7YYAKV9GzsIfjJg&s=09">Twitter</a></li>
+                <li><a href="https://www.instagram.com/gkv_hdr/">Instagram</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 EduNet. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+    
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+    </script>
+    
+</body>
+</html>

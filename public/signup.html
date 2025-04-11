@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EduNet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span>EduNet</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="signup-container">
+        <div class="signup-box">
+            <div class="signup-content">
+                <h1>Create Account</h1>
+                <p>Join our alumni network and connect with fellow graduates!</p>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+                
+                <form id="signupForm" class="signup-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">First Name*</label>
+                            <input type="text" id="firstname" name="firstname" required autocomplete="given-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name*</label>
+                            <input type="text" id="lastname" name="lastname" required autocomplete="family-name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number*</label>
+                            <input type="tel" id="phone" name="phone" required autocomplete="tel">
+                        </div>
+                    </div>
+                      
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateofbirth">Date of Birth*</label>
+                            <input type="date" id="dateofbirth" name="dateofbirth" required autocomplete="bday">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country*</label>
+                            <select id="country" name="country" required autocomplete="country">
+                                <option value="">Select country</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="Australia">Australia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userType">I am a*</label>
+                            <select id="userType" name="userType" required onchange="toggleFields()">
+                                <option value="">Select your status</option>
+                                <option value="student">Student</option>
+                                <option value="alumni">Alumni</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- w fields for Course and Branch -->
+                    <div Nev id="studentFields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="collegeName">College*</label>
+                                <select id="collegeName" name="collegeName" onchange="toggleOtherCollegeField()">
+                                    <option value="">Select college</option>
+                                    <option value="GKV">Gurukula Kangri Vishwavidyalaya</option>
+                                    <option value="IITB">IIT Bombay</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="otherCollegeField" style="display: none;">
+                                <label for="otherCollege">Other College Name*</label>
+                                <input type="text" id="otherCollege" name="otherCollege">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="course">Course*</label>
+                                <select id="course" name="course">
+                                    <option value="">Select course</option>
+                                    <option value="B.Tech">B.Tech</option>
+                                    <option value="M.Tech">M.Tech</option>
+                                    <option value="BCA">BCA</option>
+                                    <option value="MCA">MCA</option>
+                                </select>
+                            </div>   
+
+                            <div class="form-group">
+                                <label for="branch">Branch*</label>
+                                <select id="branch" name="branch">
+                                    <option value="">Select branch</option>
+                                    <option value="CSE">Computer Science Engineering</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="ME">Mechanical Engineering</option>
+                                    <option value="EE">Electrical Engineering</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="yearOfAdmission">Year of Admission*</label>
+                                <input type="number" id="yearOfAdmission" name="yearOfAdmission">
+                            </div>
+                            <div class="form-group">
+                                <label for="yearOfGraduation">Year of Graduation*</label>
+                                <input type="number" id="yearOfGraduation" name="yearOfGraduation">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rollNo">College ID/Roll No*</label>
+                                <input type="text" id="rollNo" name="rollNo">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn Profile (Optional)</label>
+                                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                        </div>
+                    </div>
+                    
+                          
+
+                    <div id="alumniFields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="employmentStatus">Employment Status*</label>
+                                <select id="employmentStatus" name="employmentStatus">
+                                    <option value="">Select employment status</option>
+                                    <option value="Employed">Employed</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Self Employed">Self Employed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName">Company Name</label>
+                                <input type="text" id="companyName" name="companyName" autocomplete="organization">
+                            </div>
+                            <div class="form-group">
+                                <label for="companyLocation">Company Location</label>
+                                <input type="text" id="companyLocation" name="companyLocation" autocomplete="address-level2">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn Profile (Optional)</label>
+                                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password*</label>
+                            <input type="password" id="password" name="password" required autocomplete="new-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpassword">Confirm Password*</label>
+                            <input type="password" id="cpassword" name="cpassword" required autocomplete="new-password">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary signup-btn">Create Account</button>
+                </form>
+                
+                <p class="login-prompt">
+                    Already have an account? <a href="/login" class="login-link">Login</a>
+                </p>
+            </div>
+            <div class="signup-image">
+                <h2>Join Our Alumni Network</h2>
+                <p>Connect with fellow graduates and unlock new opportunities</p>
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600" alt="Signup illustration">
+            </div>
+        </div>
+    </main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/signup.js"></script>
+</body>
+</html>

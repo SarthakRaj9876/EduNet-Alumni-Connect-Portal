@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - EduNet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <span>EduNet</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/network" class="nav-link">Network</a>
+                <a href="/profile" class="nav-link">Profile</a>
+                <a href="/chat" class="nav-link active">Chat</a>
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="chat-container">
+        <div class="container">
+            <div class="chat-layout">
+                <!-- Left Sidebar: Connections List -->
+                <div class="connections-sidebar">
+                    <div class="connections-header">
+                        <h2>Your Connections</h2>
+                        <div class="search-connections">
+                            <input type="text" id="connectionSearch" placeholder="Search connections...">
+                        </div>
+                        <div class="selected-count">
+                            <span id="selectedCount">0</span> selected
+                        </div>
+                    </div>
+                    <div class="connections-list" id="connectionsList">
+                        <!-- Connections will be loaded here -->
+                        <div class="loading-connections">Loading your connections...</div>
+                    </div>
+                    <div class="chat-actions">
+                        <button id="startChatBtn" class="btn btn-primary" disabled>Start Chat</button>
+                    </div>
+                </div>
+
+                <!-- Right Side: Chat Area -->
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <div class="participants-info">
+                            <h2 id="chatTitle">Select connections to start a chat</h2>
+                            <div class="participants-list" id="participantsList">
+                                <!-- Selected participants avatars will appear here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="messages-container">
+                        <div id="messagesArea" class="messages-list">
+                            <!-- Messages will appear here -->
+                            <div class="no-messages-placeholder">
+                                Select one or more connections to start chatting
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-input-container">
+                        <textarea id="messageInput" placeholder="Type your message..." disabled></textarea>
+                        <button id="sendMessageBtn" class="btn btn-primary" disabled>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html> 

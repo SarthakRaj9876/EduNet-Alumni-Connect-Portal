@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - EduNet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <span>EduNet</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/network" class="nav-link">Network</a>
+                <a href="/profile" class="nav-link active">Profile</a>
+                <a href="/chat" class="nav-link">Chat</a>
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-cover"></div>
+                <div class="profile-info">
+                    <img id="profileAvatar" src="" alt="Profile Picture" class="profile-avatar">
+                    <div class="profile-text">
+                        <h1 id="profileName">Loading...</h1>
+                        <p id="profileTitle">Loading...</p>
+                    </div>
+                    <button id="editProfileBtn" class="btn btn-primary">Edit Profile</button>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h2>About</h2>
+                    <p id="profileAbout">Loading...</p>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Personal Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Email</label>
+                            <p id="profileEmail"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone</label>
+                            <p id="profilePhone"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Date of Birth</label>
+                            <p id="profileDOB"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>LinkedIn</label>
+                            <p id="profileLinkedIn"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Education</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>College</label>
+                            <p id="profileCollege"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Department</label>
+                            <p id="profileDepartment"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Year of Admission</label>
+                            <p id="profileAdmissionYear"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Year of Graduation</label>
+                            <p id="profileGradYear"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="workSection" class="profile-section">
+                    <h2>Work Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Employment Status</label>
+                            <p id="profileEmployment"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Designation</label>
+                            <p id="profileDesignation"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Company</label>
+                            <p id="profileCompany"></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Location</label>
+                            <p id="profileLocation"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editFirstName">First Name</label>
+                    <input type="text" id="editFirstName" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="editLastName">Last Name</label>
+                    <input type="text" id="editLastName" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="editPhone">Phone</label>
+                    <input type="tel" id="editPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAbout">About</label>
+                    <textarea id="editAbout" name="about" rows="4"></textarea>
+                </div>
+                <div id="editWorkFields">
+                    <h3>Employment Information</h3>
+                    <p class="form-hint">These details can be updated by both students and alumni</p>
+                    <div class="form-group">
+                        <label for="editEmployed">Employment Status</label>
+                        <select id="editEmployed" name="employed">
+                            <option value="employed">Employed</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="selfemployed">Self Employed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDesignation">Designation</label>
+                        <input type="text" id="editDesignation" name="designation">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCompany">Company Name</label>
+                        <input type="text" id="editCompany" name="companyname">
+                    </div>
+                    <div class="form-group">
+                        <label for="editLocation">Company Location</label>
+                        <input type="text" id="editLocation" name="companylocation">
+                    </div>
+                    <div class="form-group">
+                        <label for="editLinkedIn">LinkedIn Profile</label>
+                        <input type="url" id="editLinkedIn" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

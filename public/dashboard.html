@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EduNet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <span>EduNet</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/dashboard" class="nav-link active">Dashboard</a>
+                <a href="/network" class="nav-link">Network</a>
+                <a href="/profile" class="nav-link">Profile</a>
+                <a href="/chat" class="nav-link">Chat</a>
+                <a href="/sendmail" class="nav-link">Send Mail</a>
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Left Sidebar -->
+                <div class="dashboard-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <img src="" alt="" id="userAvatar" class="profile-avatar">
+                            <h2 id="userName">Loading...</h2>
+                            <p id="userTitle">Loading...</p>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="connectionsCount">0</span>
+                                <span class="stat-label">Connections</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="viewsCount">0</span>
+                                <span class="stat-label">Profile Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                    <div class="welcome-section">
+                        <h1>Welcome Back, <span id="welcomeName">User</span>!</h1>
+                        <p>Stay connected with your alumni network</p>
+                        
+                        <!-- Add search section -->
+                        <div class="search-section">
+                            <form id="searchForm" class="search-box">
+                                <input type="text" id="searchInput" placeholder="Search by name, country, college, department...">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </form>
+                            <div id="searchResults" class="search-results">
+                                <!-- Search results will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h2>Recent Activity</h2>
+                        <div id="recentJoins" class="activity-list">
+                            <!-- Recent joins will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="posts-section">
+                        <h2>Recent Posts</h2>
+                        <!-- Add post creation form -->
+                        <div class="create-post-container">
+                            <div class="create-post-header">
+                                <img id="postUserAvatar" src="" alt="Profile Picture" class="post-avatar">
+                                <input type="text" id="postContent" placeholder="Share something with your network..." class="post-input">
+                            </div>
+                            <div class="post-type-selector">
+                                <button type="button" data-post-type="general" class="post-type-btn active">General</button>
+                                <button type="button" data-post-type="job" class="post-type-btn">Job</button>
+                                <button type="button" data-post-type="query" class="post-type-btn">Query</button>
+                                <button type="button" data-post-type="image" class="post-type-btn">Image</button>
+                            </div>
+                            
+                            <!-- Job post details (initially hidden) -->
+                            <div id="jobPostDetails" class="post-details-form" style="display: none;">
+                                <div class="form-row">
+                                    <input type="text" id="jobCompany" placeholder="Company name">
+                                    <input type="text" id="jobPosition" placeholder="Position">
+                                </div>
+                                <div class="form-row">
+                                    <input type="text" id="jobLocation" placeholder="Location">
+                                    <input type="text" id="jobApplyLink" placeholder="Application link (optional)">
+                                </div>
+                            </div>
+                            
+                            <!-- Image upload (initially hidden) -->
+                            <div id="imageUploadForm" class="post-details-form" style="display: none;">
+                                <input type="text" id="imageUrl" placeholder="Enter image URL">
+                                <p class="image-note">Enter a direct link to an image (ends with .jpg, .png, etc.)</p>
+                            </div>
+                            
+                            <div class="post-actions">
+                                <button id="createPostBtn" class="btn btn-primary">Post</button>
+                            </div>
+                        </div>
+                        <div id="recentPosts" class="posts-list">
+                            <!-- Posts will be populated here -->
+                            <div class="loading-indicator">Loading posts...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="dashboard-suggestions">
+                    <div class="suggestions-header">
+                        <h2>Connection Suggestions</h2>
+                        <p>People you may know from your college</p>
+                    </div>
+                    <div id="connectionSuggestions" class="suggestions-list">
+                        <!-- Suggestions will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Change from CDN to local script served by our Socket.IO server -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

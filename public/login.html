@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduNet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="/" class="logo">EduNet</a>
+            <nav class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <div class="login-content">
+                <h1>LOGIN</h1>
+                <p>Welcome back! Please login to your account.</p>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+                    
+                    <div class="form-footer">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary login-btn">Login Now</button>
+                </form>
+                
+                <div class="login-divider">
+                    <span>Or login with</span>
+                </div>
+                
+                <div class="social-login">
+                    <button onclick="handleGoogleLogin()" class="btn btn-outline social-btn google-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                        Login with Google
+                    </button>
+                </div>
+                
+                <p class="signup-prompt">
+                    Don't have an account? <a href="/signup" class="signup-link">Sign up</a>
+                </p>
+            </div>
+            <div class="login-image">
+                <h2>Very good works are waiting for you!</h2>
+                <p>Login now to connect with alumni and unlock opportunities.</p>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600" alt="Login illustration">
+            </div>
+        </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

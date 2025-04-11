@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Mail - EduNet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sendmail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <span>EduNet</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/network" class="nav-link">Network</a>
+                <a href="/profile" class="nav-link">Profile</a>
+                <a href="/chat" class="nav-link">Chat</a>
+                <a href="/sendmail" class="nav-link active">Send Mail</a>
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="sendmail-container">
+        <div class="container">
+            <div class="sendmail-header">
+                <h1>Send Email to Connections</h1>
+                <p>Reach out to your professional network</p>
+            </div>
+
+            <div class="sendmail-form">
+                <div class="form-group">
+                    <label for="connectionSelect">Select Recipients:</label>
+                    <div class="connection-select-container">
+                        <div id="selectedConnections" class="selected-connections">
+                            <!-- Selected connections will appear here -->
+                        </div>
+                        <div class="connection-dropdown">
+                            <input type="text" id="connectionFilter" placeholder="Search connections...">
+                            <div id="connectionsList" class="connections-list">
+                                <!-- Connections will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailSubject">Subject:</label>
+                    <input type="text" id="emailSubject" class="form-control" placeholder="Enter email subject">
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailMessage">Message:</label>
+                    <textarea id="emailMessage" class="form-control" rows="10" placeholder="Type your message here..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button id="sendMailBtn" class="btn btn-primary">Send Email</button>
+                </div>
+            </div>
+            
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/sendmail.js"></script>
+</body>
+</html> 
