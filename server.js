@@ -243,7 +243,7 @@ const userSchema = new mongoose.Schema({
     profileViews: { type: Number, default: 0 },
     visibility: { type: Boolean, default: true },
     country: { type: String, required: true },
-    courseName: { type: String, required: true },
+    courseName: { type: String },
     profilePicture: {
         url: String,
         publicId: String
