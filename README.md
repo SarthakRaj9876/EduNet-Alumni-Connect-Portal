@@ -1,4 +1,4 @@
-# EduNet-Alumni-Connect-Portal
+
 # EduNet Alumni Network
 
 Bridge the Gap Between Students and Alumni
